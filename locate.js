@@ -1,20 +1,23 @@
 (function() {
-	var initialsed = false;
 	var supported = false;
 	var latitude = null;
 	var longitude = null;
 	var address = null;
 
-	if (!navigator.geolocation) {
+	if (navigator.geolocation) {
 		supported = true;
   	};
 
-	function success() {
+	function success(position) {
 	    latitude  = position.coords.latitude;
 	    longitude = position.coords.longitude;
 	    loadAddress();
 	}
 	
+	function error (err) {
+		console.log(err);
+	}
+
 	function getLatitude() {
 		return latitude;
 	}
@@ -24,10 +27,10 @@
 	}
 
 	function getImage(width, height) {
-		width = width || 300;
-		height = height || 300;
+		var width = width || 300;
+		var height = height || 300;
 	    var img = new Image();
-	    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+	    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size="+width+"x"+height+"";
 	    return img;
 	}
 
@@ -37,11 +40,12 @@
 	    xmlhttp.onreadystatechange = function() {
 	        if(xmlhttp.readyState == XMLHttpRequest.DONE ) {
 				if (xmlhttp.status == 200) {
-					address = xmlhttp.responseText
+					address = JSON.parse(xmlhttp.responseText).results;
 				}
 	        }
 	    };
     	xmlhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude, true);
+    	console.log("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude);
     	xmlhttp.send();
 	}
 
@@ -60,6 +64,7 @@
 		init: init,
 		getLongitude: getLongitude,
 		getLatitude: getLatitude,
-		getAddress: getAddress
+		getAddress: getAddress,
+		getImage: getImage
 	}
 })();
