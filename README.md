@@ -1,8 +1,8 @@
-# Locate.js
+# Locate.js [![npm version](https://badge.fury.io/js/locatejs.svg)](https://badge.fury.io/js/locatejs)
 
 Easy encapsulation of geolocation api
 
-[Demo](https://hkirat.github.io/locate.js/)
+[Demo](https://hkirat.github.io/locatejs/)
 
 ## Installing
  - Use `npm` or `git clone` to download the module.
