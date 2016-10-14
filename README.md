@@ -2,7 +2,7 @@
 
 Easy encapsulation of geolocation api
 
-[Demo](https://hkirat.github.io/locate.js/)
+[Demo](https://hkirat.github.io/locatejs/)
 
 ## Installing
  - Use `npm` or `git clone` to download the module.
