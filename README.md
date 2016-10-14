@@ -14,13 +14,18 @@ Easy encapsulation of geolocation api
 ## Methods
 -----
 * `locate.init` - Initialises the locate variable
+* `locate.init(key)` - Initialises the locate variable and sets api key to key parameter
 * `locate.getLatitude` - Returns users Latitude
 * `locate.getLongitude` - Returns users Longitude
 * `locate.getImage` - Returns [Image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image) variable to users map image
 * `locate.getImageLink` - Returns users map location image's link
+* `locate.setKey(key)` - Sets the api key to the key parameter
 * `locate.getAdress` - Returns an array of users possible adresses.
 	* formattedAddress : Formatted Address of user
 	* address_components : Array of components of users address
+
+## Api Key
+To ensure multiple accesses to the google maps api, you will need an api key. It can be found [here](https://console.developers.google.com/apis/api/static_maps_backend?project=_)
 
 ## Browser Support
 
