@@ -1,4 +1,4 @@
-# Locate.js
+# Locate.js [![npm version](https://badge.fury.io/js/locatejs.svg)](https://badge.fury.io/js/locatejs)
 
 Easy encapsulation of geolocation api
 
