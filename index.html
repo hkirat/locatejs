@@ -38,8 +38,9 @@
 		#css-input:focus { outline:none; } 
 		#css-input-1 { border-color:#cccccc; padding:15px; font-size:15px; border-width:3px; border-radius:13px;  box-shadow: 2px 0px 18px 0px rgba(7,2,46,.46);  font-weight:normal; font-style:none; font-family:monospace;  } 
 		#css-input:focus { outline:none; } 
-		#css-input-2 { border-color:#cccccc; padding:15px; font-size:15px; border-width:3px; border-radius:13px;  box-shadow: 2px 0px 18px 0px rgba(7,2,46,.46);  font-weight:normal; font-style:none; font-family:monospace;  } 
+		#css-input-2 { border-color:#cccccc; padding:15px; font-size:15px; border-width:3px; border-radius:13px;  box-shadow: 2px 0px 18px 0px rgba(7,2,46,.46);  font-weight:normal; font-style:none; font-family:7;  } 
 		#css-input:focus { outline:none; } 
+		#css-input-3 {outline:none; border-color:#cccccc; padding:7px; font-size:px; border-width:3px;   font-weight:normal; font-style:none; font-family:monospace;  } 
 		
 		body {
 				text-align: center;
@@ -172,36 +173,37 @@
 	</div>
 <script>
 	function getLatitude() {
-	    $('#content').fadeOut('slow', function() {
+	    $('#content').fadeOut('fast', function() {
 			$('#content').html('<h2>Latitude is '+locate.getLatitude()+'</h2>')
-        	$('#content').fadeIn('slow');
+			$('#content').fadeIn('fast');
 		});    
 	}
 	function getLongitude() {
-	    $('#content').fadeOut('slow', function() {
+	    $('#content').fadeOut('fast', function() {
 			$('#content').html('<h2>Longitude is '+locate.getLongitude()+'</h2>');
-        	$('#content').fadeIn('slow');
+			$('#content').fadeIn('fast');
 		});    
 	}
 	
 	function getImage() {
-	    $('#content').fadeOut('slow', function() {
+	    $('#content').fadeOut('fast', function() {
         	$('#content').html('');
 			$('#content').append("<h2> Map </h2><br><br>");
 			$('#content').append(locate.getImage(document.getElementById("css-input-1").value, document.getElementById("css-input-2").value));
-			$('#content').fadeIn('slow');
+			$('#content').append("<br><br>Link - <input type=\"text\" id=\"css-input-3\" value = \""+locate.getImageLink(document.getElementById("css-input-1").value, document.getElementById("css-input-2").value)+"\" onClick=\"this.select();\" >");
+			$('#content').fadeIn('fast');
 		});    
 	}
 
 	function getAddresses() {
-		$('#content').fadeOut('slow', function() {
+		$('#content').fadeOut('fast', function() {
 	    	var add = locate.getAddress();
 			$('#content').html('');
 			$('#content').append('<h2>Address </h2>');
 	    	for(var i =0 ; i<add.length; i++) {
 				$('#content').append('<br><br>'+(add[i].formatted_address));
 	    	}
-			$('#content').fadeIn('slow');
+			$('#content').fadeIn('fast');
 		});    
 	}
 </script>
