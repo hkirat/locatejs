@@ -3,6 +3,7 @@
 	var latitude = null;
 	var longitude = null;
 	var address = null;
+	var api_key = null;
 
 	if (navigator.geolocation) {
 		supported = true;
@@ -26,11 +27,20 @@
 		return longitude;
 	}
 
+	function setKey(key) {
+		api_key = key;
+	}
 	function getImage(width, height) {
 		var width = width || 300;
 		var height = height || 300;
 	    var img = new Image();
-	    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size="+width+"x"+height+"";
+	    if(api_key) {
+			img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size="+width+"x"+height+"&key="+api_key;
+	    }
+	    else {
+			img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size="+width+"x"+height+"";
+	    }
+
 	    return img;
 	}
 
@@ -72,6 +82,7 @@
 		getLatitude: getLatitude,
 		getAddress: getAddress,
 		getImage: getImage,
-		getImageLink: getImageLink
+		getImageLink: getImageLink,
+		setKey: setKey
 	}
 })();
