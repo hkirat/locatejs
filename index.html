@@ -56,7 +56,6 @@
 				font-size: 4.5em;
 				text-shadow: 0 6px 1px rgba(0, 0, 0, 0.2);
 				font-family: 'Lobster', cursive;
-				margin: 2 0;
 			}
 			h2 {
 				font-size: 3.5em;
@@ -147,13 +146,15 @@
 		<a href="https://codeload.github.com/hkirat/locate/zip/0.0" class="myButton2">Download</a>
 	</div>
 	<div class="section  section--inverted">
-		<h2>Demo</h2>
+		<h1>Demo</h1>
 		<div style = "overflow:auto;">
 			<span style = "width:49%;float:left;">
 				<a href="javascript:getLatitude();" class="myButton2">Your Latitude</a><br><br>
 				<a href="javascript:getLongitude();" class="myButton2">Your Longitude</a><br><br>
+				<a href="javascript:getAddresses();" class="myButton2">Your Addresses</a><br><br>
 				<a href="javascript:getImage();" class="myButton2">Get Image</a><br><br>
-				<a href="javascript:getAddresses();" class="myButton2">See Possbile Addresses</a>
+				<input type="text" id="css-input-1" value = "300" onblur="if (this.value == '') {this.value = '300';}" onfocus="if (this.value == '300') {this.value = '';}">
+				<input type="text" id="css-input-2" value = "300" onblur="if (this.value == '') {this.value = '300';}" onfocus="if (this.value == '300') {this.value = '';}"><br><br><br>
 			</span>
 			<span style = "width:49%;float:right" id = "content">
 			</span>
@@ -172,13 +173,13 @@
 <script>
 	function getLatitude() {
 	    $('#content').fadeOut('slow', function() {
-        	$('#content').html('Latitude is ('+locate.getLatitude()+')')
+			$('#content').html('<h2>Latitude is '+locate.getLatitude()+'</h2>')
         	$('#content').fadeIn('slow');
 		});    
 	}
 	function getLongitude() {
 	    $('#content').fadeOut('slow', function() {
-        	$('#content').html('Longitude is ('+locate.getLongitude()+')')
+			$('#content').html('<h2>Longitude is '+locate.getLongitude()+'</h2>');
         	$('#content').fadeIn('slow');
 		});    
 	}
@@ -186,23 +187,23 @@
 	function getImage() {
 	    $('#content').fadeOut('slow', function() {
         	$('#content').html('');
-        	$('#content').append(locate.getImage());
-        	$('#content').fadeIn('slow');
-		});    
-	}
-
-	function getAddresses() {
-	    $('#content').fadeOut('slow', function() {
-	    	var add = locate.getAddress();
-    		$('#content').html('');
-	    	for(var i =0 ; i<add.length; i++) {
-	        	$('#content').append('<br>'+(add[i].formatted_address));
-	    	}
+			$('#content').append("<h2> Map </h2><br><br>");
+			$('#content').append(locate.getImage(document.getElementById("css-input-1").value, document.getElementById("css-input-2").value));
 			$('#content').fadeIn('slow');
 		});    
 	}
 
-
+	function getAddresses() {
+		$('#content').fadeOut('slow', function() {
+	    	var add = locate.getAddress();
+			$('#content').html('');
+			$('#content').append('<h2>Address </h2>');
+	    	for(var i =0 ; i<add.length; i++) {
+				$('#content').append('<br><br>'+(add[i].formatted_address));
+	    	}
+			$('#content').fadeIn('slow');
+		});    
+	}
 </script>
 
 <a href="https://github.com/hkirat/locate"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
