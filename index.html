@@ -179,7 +179,7 @@
 				$('#content').html('<h2>Latitude is '+locate.getLatitude()+'</h2>')
 				$('#content').fadeIn('fast');
 			} else {
-				throw "Browser incompatible"
+				alert ("Either your browser is incompatible or you have not given permission to geolocations");
 			}
 		});    
 	}
@@ -189,7 +189,7 @@
 				$('#content').html('<h2>Longitude is '+locate.getLongitude()+'</h2>');
 				$('#content').fadeIn('fast');
 			} else {
-				throw "Browser incompatible"
+				alert ("Either your browser is incompatible or you have not given permission to geolocations");
 			}
 		});    
 	}
@@ -208,7 +208,7 @@
 		$('#content').fadeOut('fast', function() {
 	    	var add = locate.getAddress();
 			if(!add) {
-				throw "Browser incompatible"
+				alert ("Either your browser is incompatible or you have not given permission to geolocations");
 				return;
 			}
 			$('#content').html('');
