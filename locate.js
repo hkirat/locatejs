@@ -34,6 +34,12 @@
 	    return img;
 	}
 
+	function getImageLink(width, height) {
+		var width = width || 300;
+		var height = height || 300;
+	    return "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size="+width+"x"+height+"";	
+	}
+
 	function loadAddress() {
 	    var xmlhttp = new XMLHttpRequest();
 
@@ -65,6 +71,7 @@
 		getLongitude: getLongitude,
 		getLatitude: getLatitude,
 		getAddress: getAddress,
-		getImage: getImage
+		getImage: getImage,
+		getImageLink: getImageLink
 	}
 })();
