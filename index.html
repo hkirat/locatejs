@@ -175,14 +175,22 @@
 <script>
 	function getLatitude() {
 	    $('#content').fadeOut('fast', function() {
-			$('#content').html('<h2>Latitude is '+locate.getLatitude()+'</h2>')
-			$('#content').fadeIn('fast');
+			if(locate.getLatitude) {
+				$('#content').html('<h2>Latitude is '+locate.getLatitude()+'</h2>')
+				$('#content').fadeIn('fast');
+			} else {
+				throw "Browser incompatible"
+			}
 		});    
 	}
 	function getLongitude() {
 	    $('#content').fadeOut('fast', function() {
-			$('#content').html('<h2>Longitude is '+locate.getLongitude()+'</h2>');
-			$('#content').fadeIn('fast');
+			if(locate.getLongitude) {
+				$('#content').html('<h2>Longitude is '+locate.getLongitude()+'</h2>');
+				$('#content').fadeIn('fast');
+			} else {
+				throw "Browser incompatible"
+			}
 		});    
 	}
 	
@@ -199,6 +207,10 @@
 	function getAddresses() {
 		$('#content').fadeOut('fast', function() {
 	    	var add = locate.getAddress();
+			if(!add) {
+				throw "Browser incompatible"
+				return;
+			}
 			$('#content').html('');
 			$('#content').append('<h2>Address </h2>');
 	    	for(var i =0 ; i<add.length; i++) {
