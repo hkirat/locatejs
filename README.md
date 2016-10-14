@@ -7,7 +7,7 @@ Easy encapsulation of geolocation api
 ## Installing
  - Use `npm` or `git clone` to download the module.
    - `npm install locatejs`
-   - `git clone https://github.com/hkirat/locate.git`
+   - `git clone https://github.com/hkirat/locatejs.git`
  - include `locate.js` or `locate.min.js`
  - Initialise with `locate.init()`
 
