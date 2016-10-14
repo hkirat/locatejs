@@ -69,10 +69,13 @@
 		return address;
 	}
 
-  	function init() {
+	function init(key) {
   		if(!supported) {
   			return;
   		}
+		if(key) {
+			api_key = key;
+		}
   		navigator.geolocation.getCurrentPosition(success, error);
   	}
 	
